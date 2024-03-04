@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./img/favicon.png">
+
+    <title>Pedra papel tesoura</title>
+
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .footer {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          padding: 20px;
+        }
+
+        .div_jogadas {
+            display: flex;
+            justify-content: space-around;
+            width: 50%;
+        }
+
+        button {
+            padding: 10px;
+            outline: none;
+            border-radius: 5px;
+            background-color: yellow;
+            font-weight: 700;
+            height: 40px;
+            border-style: solid;
+
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+        input {
+            padding: 10px;
+            outline: none;
+            height: 15px;
+            border: 2px;
+            border-style: solid;
+            border-radius: 5px;
+        }
+
+        #button_entrarSala {
+            width: 100px;
+        }
+
+        #button_criarSala {
+            width: 300px;
+        }
+
+        #input_idSala {
+            width: 170px;
+            margin-bottom: 10px;
+            margin-right: 10px;
+        }
+        
+        #input_apelido {
+            width: 280px;
+            margin-bottom: 10px;
+        }
+        
+        #div_infoSala {
+            display: flex;
+            justify-content: space-around;
+            width: 50%;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        .tremer {
+            animation: tremer 0.3s ease-in-out;
+        }
+
+        @keyframes tremer {
+            0% { transform: translateX(2) translateY(-2); box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.25); }
+            25% { transform: translateX(-2px) translateY(2px); box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.5); }
+            50% { transform: translateX(1px) translateY(-1px); box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.5); }
+            75% { transform: translateX(-2px) translateY(-2px); box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.25); }
+            100% { transform: translateX(1) translateY(1);}
+        }
+
+      </style>
+</head>
+<body>
+
+    <h1 align="center">Pedra papel tesoura</h1>
+
+    <div align="center" id="div_entrarSala">
+        <input type="text" name="" id="input_apelido" placeholder="Apelido"><br />
+        <input type="text" name="" id="input_idSala" placeholder="Sala existente"><button id="button_entrarSala">Entrar</button><br>
+        <button id="button_criarSala">Criar nova sala</button>
+    </div>
+
+    <div align="center" id="div_sala">
+        <div id="div_infoSala">
+            <div id="div_listaSala">
+                <b>Jogadores na sala:</b><br>
+                <span id="span_listaSala"></span><br />
+            </div>
+            <div id="div_idSala">
+                <b>Sala atual: </b><br/><span id="span_idSala"></span>
+            </div>
+            <button class="buttons_sairSala" id="button_sairSala">Sair</button>
+        </div>
+
+        <div id="div_iniciarJogo">
+            <button id="button_iniciarJogo" class="buttons_iniciarJogo">Iniciar</button>
+        </div>
+        <div id="div_mensagemAguardar">
+            Aguarde o criador da sala iniciar a partida...
+        </div>
+    </div>
+
+    <div align="center" id="div_jogo">
+        <button id="button_jogarPedra">Pedra</button>
+        <button id="button_jogarPapel">Papel</button>
+        <button id="button_jogarTesoura">Tesoura</button><br/>
+
+        <div class="div_jogadas">
+            <div class="jogador1">
+                <b><span id="span_apelidoJogador1"></span>: </b><span id="span_jogadaJogador1"></span><br/>
+                <img src="./img/aguardando.gif" id="img_jogadaJogador1" width="50px">
+
+            </div>
+            <div class="jogador2">
+                <b><span id="span_apelidoJogador2"></span>: </b><span id="span_jogadaJogador2"></span><br/>
+                <img src="./img/aguardando.gif" id="img_jogadaJogador2" width="50px">
+
+            </div>
+        </div>
+
+        <br/><b><span id="span_mensagemJogo"></span></b><br/><br/>
+
+        <div id="div_jogarNovamente">
+            <button id="button_jogarNovamente" class="buttons_iniciarJogo">Jogar novamente</button> ou <button class="buttons_sairSala">Sair</button>
+        </div>
+
+        <div id="div_sairOuAguardar">
+            <button class="buttons_sairSala">Sair</button> ou aguarde o criador da sala reiniciar
+        </div>
+    </div>
+
+    <div class="footer" align="center">
+        Código por <a href="http://github.com/Jean-luk">Jean Luca</a><br />
+        Ícones por <a href="https://freepik.com">Freepik</a>
+
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
